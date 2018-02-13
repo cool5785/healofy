@@ -1,0 +1,13 @@
+<div>
+  <h1>List of babies</h1>
+  <div  *ngIf="babylist;else loader">
+    <div *ngFor="let item of babylist">
+      <div class="data-item">
+        Name:{{item.name}}
+        <img [src]="item.imageURL">
+      </div>
+    </div>
+  </div>
+
+  <ng-template class="loading" #loader>Loading...</ng-template>
+</div>

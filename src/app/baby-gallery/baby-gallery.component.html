@@ -1,0 +1,13 @@
+<div class="columnWrapper">
+  <div class="dynamicColumns">
+    <div class="postWrapper" *ngFor="let item of babylist">
+      <div class="post">
+        <img [src]="item.imageURL">
+        <p>{{item.name}}</p>
+        <div class="action-buttons">
+          <div class="like-it">♥ {{item.likes}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
