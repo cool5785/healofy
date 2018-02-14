@@ -1,7 +1,7 @@
 .columnWrapper {
   width: 90%;
   min-width: 600px;
-  margin: 10px auto;
+  margin: 0 auto;
 }
 .dynamicColumns{
   -webkit-column-count: 3;
@@ -22,9 +22,7 @@
   background: transparent;
   box-shadow: none;
 
-
-  margin: -8px;
-  margin-bottom: 20px;
+  margin: -8px -8px 20px;
   padding: 8px;
 
   cursor: zoom-in;
@@ -68,10 +66,9 @@
 }
 
 
-.dynamicColumns .post img {
+.dynamicColumns .post > img {
   width: 100%;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
+  padding-bottom: 0;
   margin-bottom: 5px;
 }
 .dynamicColumns .post p {
@@ -99,15 +96,78 @@
 .dynamicColumns:hover .post:not(:hover) {
   opacity: 0.4;
 }
+.dynamicColumns:hover .post:not(:hover) .hover-section {
+  visibility: hidden;
+}
+.dynamicColumns:hover .hover-section {
+  visibility: visible;
+}
+.hover-section {
+  position: absolute;
+  visibility: hidden;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+.hover-section > .description, .action-buttons, .dimGradient {
+  position: absolute;
+}
+.dimGradient {
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.15);
+  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  border-radius: 0 0 8px 8px;
+
+  height: 100px;
+  width: calc(100% - 16px);
+
+  position: absolute;
+  z-index: 3;
+  /*border: 1px solid red;*/
+}
+.hover-section > .description {
+  /*border: 1px solid blue;*/
+  bottom: 15px;
+  left: 15px;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  opacity: 1;
+  z-index: 4;
+  width: calc(100% - 30px);
+  text-shadow: 0 0 2px rgba(150, 150, 150, 1);
+}
+.hover-section > .description .like-count {
+  color: #fff;
+}
+.is-liked {
+  color: red;
+}
 
 .action-buttons {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
+  top: 20px;
+  right: 20px;
+  bottom: initial;
+  z-index: 4;
 }
 .action-buttons .like-it {
-  color: red;
-  font-size: 30px;
   cursor: pointer;
+  pointer-events: all;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.action-buttons .like-it:hover img, .action-buttons .like-it:focus img {
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
 }

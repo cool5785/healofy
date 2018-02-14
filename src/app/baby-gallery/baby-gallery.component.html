@@ -3,9 +3,19 @@
     <div class="postWrapper" *ngFor="let item of babylist">
       <div class="post">
         <img [src]="item.imageURL">
-        <p>{{item.name}}</p>
-        <div class="action-buttons">
-          <div class="like-it">♥ {{item.likes}}</div>
+        <div class="hover-section">
+          <div class="description clearfix">
+            <span class="baby-name float-left">{{item.name}}</span>
+            <div class="like-count float-right clearfix">
+              <span [ngClass]="{'is-liked': !!item.isLiked}">♥ </span><span>{{item.likes}}</span>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <div class="like-it" (click)="toggleLike(item)">
+              <img src="/assets/img/facebook-like.svg">
+            </div>
+          </div>
+          <div class="dimGradient"></div>
         </div>
       </div>
     </div>

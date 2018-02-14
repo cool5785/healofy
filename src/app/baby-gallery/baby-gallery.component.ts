@@ -14,6 +14,17 @@ export class BabyGalleryComponent implements OnInit {
     this.fetchBabyData();
   }
 
+  toggleLike(item) {
+    if (!item.isLiked) {
+      item.isLiked = true;
+      item.likes = parseInt(item.likes, 10) + 1;
+    } else {
+      item.likes = parseInt(item.likes, 10) - 1;
+      item.isLiked = false;
+    }
+    // TODO: Implement to update and store in DB
+  }
+
   fetchBabyData() {
     this._dataService.getData('/babylist').subscribe((data) => {
       console.log('Baby Data from DB', data);
